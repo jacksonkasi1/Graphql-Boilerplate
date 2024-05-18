@@ -1,12 +1,18 @@
+// ** import hono
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { timing } from "hono/timing";
 import { HTTPException } from "hono/http-exception";
 
+// ** import drizzle & graphql
 import { buildSchema } from "drizzle-graphql";
 import { createYoga } from "graphql-yoga";
 import { drizzle } from "drizzle-orm/d1";
 
+// ** import schema
+import * as dbSchema from "@/schema";
+
+// ** import config
 import { Env } from "@/config/env";
 
 const app = new Hono<{ Bindings: Env }>({ strict: false });
@@ -15,17 +21,15 @@ app.use("*", timing());
 app.use(cors());
 
 app.use("/graphql/*", async (c) => {
-  const db = drizzle(c.env.DB);
+  const db = drizzle({ schema: dbSchema });
   const { schema } = buildSchema(db);
-
-  console.log({ schema });
 
   const yoga = createYoga({
     schema,
     context: c,
     multipart: true,
     cors: true,
-    logging: "debug",
+    logging: "debug"
   });
 
   return yoga.handle(c.req.raw);
