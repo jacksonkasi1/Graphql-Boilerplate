@@ -1,0 +1,26 @@
+{
+	"name": "apollo-server",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy --minify",
+		"dev": "wrangler dev --remote",
+		"start": "wrangler dev",
+		"cf-typegen": "wrangler types",
+		"generate": "drizzle-kit generate",
+		"push": "wrangler d1 migrations apply graphql-db-2 --remote"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20240512.0",
+		"drizzle-kit": "^0.21.2",
+		"typescript": "^5.4.5",
+		"wrangler": "^3.57.0"
+	},
+	"dependencies": {
+		"@apollo/server": "^4.10.4",
+		"@as-integrations/cloudflare-workers": "^1.0.2",
+		"@graphql-tools/schema": "^10.0.3",
+		"drizzle-orm": "^0.30.10",
+		"graphql": "^16.8.1"
+	}
+}
