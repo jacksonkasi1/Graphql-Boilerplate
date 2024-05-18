@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
-		"dev": "wrangler dev",
+		"dev": "wrangler dev --remote",
 		"start": "wrangler dev",
 		"cf-typegen": "wrangler types",
 		"generate": "drizzle-kit generate",
@@ -19,7 +19,6 @@
 	},
 	"dependencies": {
 		"@hono/graphql-server": "^0.4.3",
-		"drizzle-graphql": "^0.6.0",
 		"drizzle-orm": "^0.30.10",
 		"graphql": "^16.8.1",
 		"graphql-yoga": "^5.3.1"

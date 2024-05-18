@@ -8,9 +8,6 @@ dependencies:
   '@hono/graphql-server':
     specifier: ^0.4.3
     version: 0.4.3(hono@4.3.7)
-  drizzle-graphql:
-    specifier: ^0.6.0
-    version: 0.6.0(drizzle-orm@0.30.10)(graphql@16.8.1)
   drizzle-orm:
     specifier: ^0.30.10
     version: 0.30.10(@cloudflare/workers-types@4.20240512.0)
@@ -1055,6 +1052,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+    dev: true
 
   /difflib@0.2.4:
     resolution: {integrity: sha512-9YVwmMb0wQHQNr5J9m6BSj6fk4pfGITGQOOs+D9Fl+INODWFOfvhIU1hNv6GgR1RBoC/9NJcwu77zShxV0kT7w==}
@@ -1068,19 +1066,6 @@ packages:
     dependencies:
       wordwrap: 1.0.0
     dev: true
-
-  /drizzle-graphql@0.6.0(drizzle-orm@0.30.10)(graphql@16.8.1):
-    resolution: {integrity: sha512-FXJL75ZPI4VIZtO6GCwqgFQmENNyw8E1YzJURwtTrPzdSu+ukHg27yPailGdZraix6U/8lFwTz1a/FMizHprfw==}
-    peerDependencies:
-      drizzle-orm: '>=0.30.9'
-      graphql: '>=16.3.0'
-    dependencies:
-      drizzle-orm: 0.30.10(@cloudflare/workers-types@4.20240512.0)
-      graphql: 16.8.1
-      graphql-parse-resolve-info: 4.13.0(graphql@16.8.1)
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /drizzle-kit@0.21.2:
     resolution: {integrity: sha512-U87IhZyCt/9d0ZT/Na3KFJVY31tSxtTx/n9UMcWFpW/5c2Ede39xiCG5efNV/0iimsv97UIRtDI0ldLBW5lbcg==}
@@ -1435,19 +1420,6 @@ packages:
       once: 1.4.0
     dev: true
 
-  /graphql-parse-resolve-info@4.13.0(graphql@16.8.1):
-    resolution: {integrity: sha512-VVJ1DdHYcR7hwOGQKNH+QTzuNgsLA8l/y436HtP9YHoX6nmwXRWq3xWthU3autMysXdm0fQUbhTZCx0W9ICozw==}
-    engines: {node: '>=8.6'}
-    peerDependencies:
-      graphql: '>=0.9 <0.14 || ^14.0.2 || ^15.4.0 || ^16.3.0'
-    dependencies:
-      debug: 4.3.4
-      graphql: 16.8.1
-      tslib: 2.6.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /graphql-yoga@5.3.1(graphql@16.8.1):
     resolution: {integrity: sha512-n918QV6TF7xTjb9ASnozgsr4ydMc08c+x4eRAWKxxWVwSnzdP2xeN2zw1ljIzRD0ccSCNoBajGDKwcZkJDitPA==}
     engines: {node: '>=18.0.0'}
@@ -1621,6 +1593,7 @@ packages:
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+    dev: true
 
   /mustache@4.2.0:
     resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
