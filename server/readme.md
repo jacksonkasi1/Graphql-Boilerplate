@@ -3,6 +3,7 @@
 ## Resources - D1 & Drizzle ORM
 
 - <https://orm.drizzle.team/docs/get-started-sqlite#cloudflare-d1>
+- <https://orm.drizzle.team/kit-docs/upgrade-21#how-to-migrate-to-0210>
 - <https://github.com/drizzle-team/drizzle-orm/discussions/1545>
 - <https://sat0shi.dev/posts/drizzle-intro>
 - <https://www.jacobparis.com/content/remix-drizzle-cloudflare-d1>
