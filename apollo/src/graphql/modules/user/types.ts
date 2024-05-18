@@ -24,6 +24,16 @@ export const userTypeDefs = `#graphql
   type Mutation {
     addUser(input: UserInput!): User
     updateUser(id: Int!, input: UserInput!): User
-    deleteUser(id: Int!): Boolean
+    deleteUser(id: Int!): DeleteUserResponse
+  }
+
+  type DeleteUserResponse {
+    success: Boolean!
+    message: String!
+    data: UserData
+  }
+
+  type UserData {
+    user: User
   }
 `;

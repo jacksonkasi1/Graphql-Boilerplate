@@ -44,8 +44,32 @@ export const userService = {
       .get();
     return result;
   },
-  deleteUser: (db: DrizzleD1Database, id: number) => {
-    db.delete(tbl_users).where(eq(tbl_users.id, id)).execute();
-    return true;
+  deleteUser: async (db: DrizzleD1Database, id: number) => {
+    const isUserExist = await db
+      .select()
+      .from(tbl_users)
+      .where(eq(tbl_users.id, id))
+      .get();
+
+    if (!isUserExist?.id) {
+      return {
+        success: false,
+        message: "User not found",
+      };
+    }
+
+    const user = db
+      .delete(tbl_users)
+      .where(eq(tbl_users.id, id))
+      .returning()
+      .execute();
+
+    return {
+      success: true,
+      message: "User deleted successfully",
+      data: {
+        User: user,
+      },
+    };
   },
 };
