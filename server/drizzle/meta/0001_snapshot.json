@@ -1,11 +1,11 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "9da643f6-89f2-4dca-8441-7bef8d0f6c2f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "acc6b049-4db5-44d3-8625-39bbc3315908",
+  "prevId": "9da643f6-89f2-4dca-8441-7bef8d0f6c2f",
   "tables": {
-    "users": {
-      "name": "users",
+    "tbl_users": {
+      "name": "tbl_users",
       "columns": {
         "id": {
           "name": "id",
@@ -61,7 +61,9 @@
   "enums": {},
   "_meta": {
     "schemas": {},
-    "tables": {},
+    "tables": {
+      "\"users\"": "\"tbl_users\""
+    },
     "columns": {}
   }
 }

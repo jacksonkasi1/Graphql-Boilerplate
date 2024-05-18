@@ -8,7 +8,7 @@
 		"start": "wrangler dev",
 		"cf-typegen": "wrangler types",
 		"generate": "drizzle-kit generate",
-		"push": "drizzle-kit up"
+		"db:push": "pnpm wrangler d1 migrations apply graphql-db --remote"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240512.0",
