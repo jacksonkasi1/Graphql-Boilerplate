@@ -17,6 +17,9 @@
 		"wrangler": "^3.57.0"
 	},
 	"dependencies": {
-		"drizzle-orm": "^0.30.10"
+		"drizzle-graphql": "^0.6.0",
+		"drizzle-orm": "^0.30.10",
+		"graphql": "^16.8.1",
+		"graphql-yoga": "^5.3.1"
 	}
 }
