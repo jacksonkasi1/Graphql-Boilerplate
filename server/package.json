@@ -1,16 +1,22 @@
 {
-  "name": "server",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "cf-typegen": "wrangler types"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240512.0",
-    "typescript": "^5.0.4",
-    "wrangler": "^3.0.0"
-  }
+	"name": "server",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"cf-typegen": "wrangler types",
+		"generate": "drizzle-kit generate",
+		"push": "drizzle-kit up"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20240512.0",
+		"drizzle-kit": "^0.21.2",
+		"typescript": "^5.4.5",
+		"wrangler": "^3.57.0"
+	},
+	"dependencies": {
+		"drizzle-orm": "^0.30.10"
+	}
 }
