@@ -7,7 +7,7 @@ import { HTTPException } from "hono/http-exception";
 // ** import drizzle
 import { drizzle } from "drizzle-orm/d1";
 
-// ** import  graphql
+// ** import graphql
 import { createYoga } from "graphql-yoga";
 import { createSchema } from "./graphql";
 
