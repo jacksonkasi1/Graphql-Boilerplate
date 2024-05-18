@@ -4,10 +4,10 @@ import { DrizzleD1Database } from "drizzle-orm/d1";
 
 export const userService = {
   getUsers: (db: DrizzleD1Database, offset: number, limit: number) => {
-    return db.select().from(tbl_users).limit(limit).offset(offset).all();
+    return db.select().from(tbl_users).limit(limit).offset(offset).prepare().all()
   },
   getUserById: (db: DrizzleD1Database, id: number) => {
-    return db.select().from(tbl_users).where(eq(tbl_users.id, id)).get();
+    return db.select().from(tbl_users).where(eq(tbl_users.id, id)).prepare().execute()
   },
   addUser: (
     db: DrizzleD1Database,
@@ -23,7 +23,7 @@ export const userService = {
         updatedAt: sql`(strftime('%s', 'now'))`,
       })
       .returning()
-      .get();
+      .prepare().execute()
     return result;
   },
   updateUser: (
@@ -41,7 +41,7 @@ export const userService = {
       })
       .where(eq(tbl_users.id, id))
       .returning()
-      .get();
+      .prepare().all()
     return result;
   },
   deleteUser: async (db: DrizzleD1Database, id: number) => {
@@ -49,6 +49,7 @@ export const userService = {
       .select()
       .from(tbl_users)
       .where(eq(tbl_users.id, id))
+      .prepare()
       .get();
 
     if (!isUserExist?.id) {
