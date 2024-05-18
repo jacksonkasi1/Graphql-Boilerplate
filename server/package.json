@@ -13,10 +13,12 @@
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240512.0",
 		"drizzle-kit": "^0.21.2",
+		"hono": "^4.3.7",
 		"typescript": "^5.4.5",
 		"wrangler": "^3.57.0"
 	},
 	"dependencies": {
+		"@hono/graphql-server": "^0.4.3",
 		"drizzle-graphql": "^0.6.0",
 		"drizzle-orm": "^0.30.10",
 		"graphql": "^16.8.1",
