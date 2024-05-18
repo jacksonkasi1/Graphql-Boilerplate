@@ -4,13 +4,15 @@ import { cors } from "hono/cors";
 import { timing } from "hono/timing";
 import { HTTPException } from "hono/http-exception";
 
-// ** import drizzle & graphql
-import { createYoga } from "graphql-yoga";
+// ** import drizzle
 import { drizzle } from "drizzle-orm/d1";
+
+// ** import  graphql
+import { createYoga } from "graphql-yoga";
+import { createSchema } from "./graphql";
 
 // ** import config
 import { Env } from "@/config/env";
-import { createSchema } from "./graphql";
 
 const app = new Hono<{ Bindings: Env }>({ strict: false });
 
