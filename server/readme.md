@@ -17,6 +17,7 @@
 ## Projects
 
 - <https://github.com/mizchi/d1-drizzle-example>
+- <https://github.com/jahir9991/cloudflare-hono-starter>
 - <https://git.histb.com/aantipov/notion-google-tasks-worker>
 - <https://git.histb.com/jahir9991/sveltekit-cloudflare-fullstack>
 - <https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md>

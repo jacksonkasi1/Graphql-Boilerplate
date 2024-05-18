@@ -1,18 +1,18 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.toml`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { buildSchema } from "drizzle-graphql";
+import { createYoga } from "graphql-yoga";
+import { drizzle } from "drizzle-orm/d1";
 
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
-	},
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext
+  ): Promise<Response> {
+    const db = drizzle(env.DB);
+    const { schema } = buildSchema(db);
+    // Create a Yoga instance with a GraphQL schema.
+    const yoga = createYoga({ schema});
+
+    return yoga.fetch(request, env, ctx);
+  },
 };
