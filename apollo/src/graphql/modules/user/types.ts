@@ -1,10 +1,8 @@
-// import { gql } from "apollo-server";
-
 export const userTypeDefs = `#graphql
   scalar Date
 
   type User {
-    id: ID!
+    id: Int!
     name: String!
     email: String!
     profile: String!
@@ -20,12 +18,12 @@ export const userTypeDefs = `#graphql
 
   type Query {
     users(offset: Int, limit: Int): [User]
-    user(id: ID!): User
+    user(id: Int!): User
   }
 
   type Mutation {
     addUser(input: UserInput!): User
-    updateUser(id: ID!, input: UserInput!): User
-    deleteUser(id: ID!): Boolean
+    updateUser(id: Int!, input: UserInput!): User
+    deleteUser(id: Int!): Boolean
   }
 `;

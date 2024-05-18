@@ -1,15 +1,16 @@
+// ** import ApolloServer
 import { ApolloServer } from "@apollo/server";
+import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { startServerAndCreateCloudflareWorkersHandler } from "@as-integrations/cloudflare-workers";
 
+// ** import graphql
 import { schema } from "./graphql/schema";
-import { drizzle } from "drizzle-orm/d1";
-import { Env } from "./config/env";
-import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 
-export interface Context {
-  env: Env;
-  request: Request;
-}
+// ** import drizzle
+import { drizzle } from "drizzle-orm/d1";
+
+// ** import config
+import { Env, Context } from "./config/env";
 
 const server = new ApolloServer<Context>({
   schema, //  typeDefs & resolvers
