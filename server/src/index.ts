@@ -1,18 +1,63 @@
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { HTTPException } from "hono/http-exception";
+
 import { buildSchema } from "drizzle-graphql";
 import { createYoga } from "graphql-yoga";
 import { drizzle } from "drizzle-orm/d1";
+import { timing } from "hono/timing";
+import { Env } from "@/config/env";
 
-export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext
-  ): Promise<Response> {
-    const db = drizzle(env.DB);
-    const { schema } = buildSchema(db);
-    // Create a Yoga instance with a GraphQL schema.
-    const yoga = createYoga({ schema});
+const app = new Hono<{ Bindings: Env }>({ strict: false });
 
-    return yoga.fetch(request, env, ctx);
-  },
-};
+app.use("*", timing());
+app.use(cors());
+
+app.use("/graphql/*", async (c) => {
+  const db = drizzle(c.env.DB);
+  const { schema } = buildSchema(db);
+
+  console.log({ schema });
+
+  const yoga = createYoga({
+    schema,
+    context: c,
+    multipart: true,
+    cors: true,
+    logging: "debug",
+  });
+
+  return yoga.handle(c.req.raw);
+});
+
+app.notFound((c) => c.text("😢 Not Found", 404));
+
+app.onError((err: any, c) => {
+  console.log("calling on error");
+
+  if (err instanceof HTTPException) {
+    return c.json(
+      {
+        status: err.status,
+        success: false,
+        message: err.message ?? "unknown error",
+      },
+      {
+        status: err.status,
+      }
+    );
+  } else {
+    return c.json(
+      {
+        status: 500,
+        success: false,
+        message: err.message ?? "unknown error",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+});
+
+export default app;

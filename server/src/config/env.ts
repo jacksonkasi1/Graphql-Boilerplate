@@ -1,5 +1,7 @@
-export interface Env {
-  // If you set another name in wrangler.toml as the value for 'binding',
-  // replace "DB" with the variable name you defined.
+import { Context } from "hono";
+
+export type Env = {
   DB: D1Database;
-}
+};
+
+export type AppContext = Context<{ Bindings: Env }>;
